@@ -1,14 +1,14 @@
-# Skills de vídeo (Claude Code)
+# rainskills
 
 Em cada máquina, dentro do Claude Code:
 
 ```
-/plugin marketplace add <usuario>/claude-skills
-/plugin install video-produto@bruno-skills
-/plugin install video-local@bruno-skills
-/plugin install filme-de-la@bruno-skills
+/plugin marketplace add ingaenth/rainskills
+/plugin install video-produto@rainskills
+/plugin install video-local@rainskills
+/plugin install filme-de-la@rainskills
 ```
 
-Atualizar: `/plugin marketplace update bruno-skills`.
+Atualizar: `/plugin marketplace update rainskills`.
 
 A chave do kie.ai fica fora do repositório, em `~/.config/kie/key`.
