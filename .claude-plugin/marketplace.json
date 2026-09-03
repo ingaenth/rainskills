@@ -1,0 +1,27 @@
+{
+  "name": "bruno-skills",
+  "owner": {
+    "name": "Bruno Albuquerque",
+    "email": "fajr2002@msn.com"
+  },
+  "plugins": [
+    {
+      "name": "video-produto",
+      "source": "./plugins/video-produto",
+      "description": "Produz vídeo de anúncio para empresa de tecnologia — SaaS, app, plataforma, hardware — de 20 a 30s, em 16:9, 9:16 e 1:1. Imagem e vídeo com Grok Imagine, trilha com Suno e locução opcional, tudo no ki",
+      "version": "1.0.0"
+    },
+    {
+      "name": "video-local",
+      "source": "./plugins/video-local",
+      "description": "Produz vídeo de anúncio para negócio local presencial — spa, clínica de estética, salão, barbearia, restaurante, academia, studio, hotel, consultório. De 15 a 30s, priorizando 9:16. O produto é invisí",
+      "version": "1.0.0"
+    },
+    {
+      "name": "filme-de-la",
+      "source": "./plugins/filme-de-la",
+      "description": "Produz um curta narrado em stop-motion de lã (~32s, 720p) do roteiro ao master. Imagens com nano-banana, vídeo com Grok Imagine (image-to-video + extend) voz com ElevenLabs Turbo e trilha com Suno — t",
+      "version": "1.0.0"
+    }
+  ]
+}
