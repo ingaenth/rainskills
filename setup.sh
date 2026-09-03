@@ -3,7 +3,7 @@
 # uso:  curl -fsSL https://raw.githubusercontent.com/ingaenth/rainskills/main/setup.sh | bash
 #   ou: bash setup.sh          (com KIE_KEY=... no ambiente para não perguntar)
 set -euo pipefail
-REPO="ingaenth/rainskills"; MKT="rainskills"; PLUGINS="video-produto video-local filme-de-la"
+REPO="ingaenth/rainskills"; MKT="rainskills"; PLUGINS="video-produto video-local filme-de-la rainskills-setup"
 ok(){ printf '  \033[32m✔\033[0m %s\n' "$*"; }; av(){ printf '  \033[33m•\033[0m %s\n' "$*"; }
 
 # 1) ffmpeg estático em ~/.local/bin

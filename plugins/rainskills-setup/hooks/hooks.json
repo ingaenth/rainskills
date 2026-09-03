@@ -1,0 +1,13 @@
+{
+  "description": "Checagem de pré-requisitos das skills de vídeo",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          { "type": "command", "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/checar.sh\"", "timeout": 20 }
+        ]
+      }
+    ]
+  }
+}

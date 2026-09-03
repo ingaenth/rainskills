@@ -1,0 +1,5 @@
+{
+  "name": "rainskills-setup",
+  "version": "1.0.0",
+  "description": "Confere no início de cada sessão se ffmpeg e a chave do kie.ai existem; avisa o que falta e como resolver."
+}

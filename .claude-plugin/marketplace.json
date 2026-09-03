@@ -22,6 +22,12 @@
       "source": "./plugins/filme-de-la",
       "description": "Produz um curta narrado em stop-motion de lã (~32s, 720p) do roteiro ao master. Imagens com nano-banana, vídeo com Grok Imagine (image-to-video + extend) voz com ElevenLabs Turbo e trilha com Suno — t",
       "version": "1.0.0"
+    },
+    {
+      "name": "rainskills-setup",
+      "source": "./plugins/rainskills-setup",
+      "description": "Checa ffmpeg e chave do kie.ai no início da sessão",
+      "version": "1.0.0"
     }
   ]
 }
