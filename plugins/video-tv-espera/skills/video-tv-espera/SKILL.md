@@ -38,10 +38,12 @@ A cadeia que funciona:
    `image_input`** — ele preserva sala, uniforme e até tatuagem da cliente. No
    prompt, peça literalmente: *"anatomically perfect hands, one left and one right
    hand, five fingers each; natural serene faces"*.
-2. **Padrão da casa: nano-banana-2 para TUDO** (gente e ambiente) — é o Gemini 2.5
-   Flash Image; não existe "GPT Image 2.5", quando pedirem "o 2.5" é este. Ambiente
-   sem gente também sai bem no gpt-image-2 pela metade do preço (6 vs 12 cr), mas
-   padronizar num motor só evita o erro de usar o errado em cena com corpo.
+2. **GPT Image 2.5 (Flare/Sunburst, set/2026) corrigiu a anatomia** — testado:
+   mãos e rostos perfeitos a 6 cr. **Mas no mesmo teste ele redesenhou a sala**
+   (spa genérico bonito no lugar da sala real das referências). A escolha vira:
+   fidelidade ao lugar = **nano-banana-2** (12 cr, preserva sala/uniforme/tatuagem);
+   cena que pode ser "um spa bonito" = **gpt-image-2-5-flare** (6 cr). O gpt-image-2
+   antigo segue proibido para gente.
 3. **Animar com trava:** no prompt do i2v, *"hands keep exactly five fingers each
    and never deform; faces stay natural"* + movimento mínimo.
 4. **QC obrigatório em todo clipe com gente:** extraia frame do início, meio e fim
@@ -92,8 +94,11 @@ sempre no mesmo canto e na mesma altura em todos os planos.
 
 Imagem custa 6–12 créditos; animação custa 27. O fluxo que não queima crédito:
 
-1. Quadros + mock das cartelas → **publique numa URL que o cliente abre do celular**
-   (PDF ou PNG de contato). 
+1. Quadros + mock das cartelas → **gere o "Roteiro do vídeo"** com
+   `scripts/roteiro.py` e publique numa URL que o cliente abre do celular. Não é uma
+   grade de imagens: é o plano completo, plano a plano — **de que segundo a que
+   segundo**, o que acontece em cada imagem (movimento), a transição para o próximo,
+   a cartela e o áudio. O cliente aprova o FILME, não as fotos.
 2. Só anima o que foi aprovado. **Nunca anime sem OK explícito** — é a regra número
    um, escrita depois de refazer uma peça inteira.
 3. Montagem é ffmpeg local: trocar texto, ordem, trilha ou ritmo custa zero. Diga

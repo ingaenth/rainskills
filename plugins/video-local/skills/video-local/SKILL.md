@@ -200,15 +200,15 @@ Ver `reference/materiais.md`. A ordem que rende:
    de engajamento: número de seguidores não é prova de nada, curtidas por post são.
 4. **Só então pergunte** — e peça poucas coisas, específicas.
 
-**O motor de imagem padrão é o nano-banana-2** (Gemini 2.5 Flash Image — atenção ao
-nome: não existe "GPT Image 2.5"; quando alguém pedir "o 2.5", é este). Sempre com
-as fotos reais do lugar como `image_input`. Custa o dobro do GPT Image 2 (12 vs 6
-créditos), e vale: em cena de tratamento com pessoas o GPT Image 2 deforma corpo
-(caso real: massagem com duas mãos direitas, terapeutas com cara de manequim), e o
-nano-banana-2 resolveu de primeira. Para gente, peça literalmente *"anatomically
-perfect hands, one left and one right hand, five fingers each"* — e faça QC de mãos
-no início/meio/fim de todo clipe animado. O **Grok** só anima, e no prompt dele
-repita a trava de mãos e rostos. Ver `video-tv-espera` para a cadeia completa.
+**Motores de imagem, decididos por teste (set/2026):** o gpt-image-2 deforma corpo
+em cena de tratamento (caso real: duas mãos direitas, terapeutas-manequim) — nunca
+para gente. O **nano-banana-2** (Gemini 2.5 Flash) preserva a sala real, o uniforme
+e até a tatuagem da cliente: é o padrão quando o lugar tem de ser AQUELE lugar
+(12 cr). O **gpt-image-2-5-flare** (OpenAI, set/2026) tem anatomia perfeita a 6 cr,
+mas no teste redesenhou a sala — use quando "um spa bonito" basta. Para gente, peça
+literalmente *"anatomically perfect hands, one left and one right hand, five fingers
+each"* e faça QC de mãos no início/meio/fim de todo clipe animado. O **Grok** só
+anima, com a trava de mãos e rostos no prompt. Ver `video-tv-espera`.
 
 ## O formato tour — a peça que mais rende no gênero
 
@@ -237,6 +237,10 @@ Invertido em relação à skill de produto. Tráfego local vive em Reels e Stori
 ## Produção por etapas
 
 Idêntica às outras — `reference/etapas.md`. Para negócio local, agrupe assim:
+
+Em toda parada de quadros, entregue junto o **"Roteiro do vídeo"** (script
+`roteiro.py` da skill `video-tv-espera`): link único com cada plano, seu intervalo
+de tempo, movimento, transição e cartela — o cliente aprova o filme, não as fotos.
 
 | Parada | Entrega |
 |---|---|
