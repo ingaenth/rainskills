@@ -200,9 +200,14 @@ Ver `reference/materiais.md`. A ordem que rende:
    de engajamento: número de seguidores não é prova de nada, curtidas por post são.
 4. **Só então pergunte** — e peça poucas coisas, específicas.
 
-O **GPT Image 2** monta o quadro com as fotos reais como referência; o **Grok** só
-anima. Mesma divisão da outra skill, e vale igual: o Grok não acrescenta nada, só
-move o que já está lá.
+O **GPT Image 2** monta o quadro com as fotos reais como referência — **mas só para
+ambiente sem gente**. Em cena de tratamento com pessoas ele deforma corpo (caso
+real: massagem com duas mãos direitas, terapeutas com cara de manequim). **Pessoa em
+cena = nano-banana-2**, com as fotos reais como `image_input` e o pedido literal de
+*"anatomically perfect hands, one left and one right hand, five fingers each"* — e
+QC de mãos no início/meio/fim de todo clipe animado. O **Grok** só anima, e no
+prompt dele repita a trava de mãos e rostos. Ver a skill `video-tv-espera` para a
+cadeia completa.
 
 ## Formatos — 9:16 primeiro
 

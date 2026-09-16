@@ -13,6 +13,8 @@ Ou à mão, dentro do Claude Code:
 /plugin install video-produto@rainskills
 /plugin install video-local@rainskills
 /plugin install filme-de-la@rainskills
+/plugin install video-motion@rainskills
+/plugin install video-tv-espera@rainskills
 /plugin install rainskills-setup@rainskills
 ```
 

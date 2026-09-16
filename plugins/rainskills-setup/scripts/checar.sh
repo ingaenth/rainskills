@@ -3,9 +3,11 @@
 falta=()
 command -v ffmpeg >/dev/null 2>&1 || [ -x "$HOME/.local/bin/ffmpeg" ] || falta+=("ffmpeg não encontrado")
 [ -s "$HOME/.config/kie/key" ] || falta+=("chave do kie.ai ausente em ~/.config/kie/key")
+FFB=$(command -v ffmpeg || echo "$HOME/.local/bin/ffmpeg")
+[ -x "$FFB" ] && ! "$FFB" -filters 2>/dev/null | grep -qw ass && falta+=("ffmpeg sem libass (filtro ass): a tipografia de video-motion nao renderiza")
 [ ${#falta[@]} -eq 0 ] && exit 0
 echo "rainskills: pré-requisitos das skills de vídeo faltando nesta máquina:"
 for f in "${falta[@]}"; do echo "  - $f"; done
 echo "Resolva com:  curl -fsSL https://raw.githubusercontent.com/ingaenth/rainskills/main/setup.sh | bash"
-echo "Avise o usuário antes de usar video-produto, video-local ou filme-de-la."
+echo "Avise o usuário antes de usar video-produto, video-local, video-motion ou filme-de-la."
 exit 0

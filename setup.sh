@@ -3,7 +3,7 @@
 # uso:  curl -fsSL https://raw.githubusercontent.com/ingaenth/rainskills/main/setup.sh | bash
 #   ou: bash setup.sh          (com KIE_KEY=... no ambiente para não perguntar)
 set -euo pipefail
-REPO="ingaenth/rainskills"; MKT="rainskills"; PLUGINS="video-produto video-local filme-de-la rainskills-setup"
+REPO="ingaenth/rainskills"; MKT="rainskills"; PLUGINS="video-produto video-local filme-de-la video-motion rainskills-setup"
 ok(){ printf '  \033[32m✔\033[0m %s\n' "$*"; }; av(){ printf '  \033[33m•\033[0m %s\n' "$*"; }
 
 # 1) ffmpeg estático em ~/.local/bin
@@ -55,4 +55,4 @@ if command -v claude >/dev/null 2>&1; then
   claude plugin marketplace add "$REPO" >/dev/null 2>&1 || claude plugin marketplace update "$MKT" >/dev/null 2>&1 || true
   for s in $PLUGINS; do claude plugin install "$s@$MKT" >/dev/null 2>&1 && ok "plugin $s" || av "plugin $s: será instalado ao abrir o Claude Code"; done
 else av "claude não está no PATH; ao abrir o Claude Code os plugins entram pelo settings.json"; fi
-echo; ok "pronto. Abra o Claude Code e use /video-produto, /video-local ou /filme-de-la"
+echo; ok "pronto. Abra o Claude Code e use /video-produto, /video-local, /video-motion ou /filme-de-la"

@@ -24,6 +24,18 @@
       "version": "1.0.0"
     },
     {
+      "name": "video-motion",
+      "source": "./plugins/video-motion",
+      "description": "Produz vídeo de motion graphics para anúncio no nível de post de marca — keyframes desenhados na identidade do cliente e animados entre first frame e last frame pelo Gemini Omni Video (kie.ai), logo s",
+      "version": "1.0.0"
+    },
+    {
+      "name": "video-tv-espera",
+      "source": "./plugins/video-tv-espera",
+      "description": "Produz o vídeo institucional em loop para a TV do lobby, recepção ou sala de espera de um negócio local — spa, clínica, consultório, salão, academia, hotel, restaurante. 16:9, 1:10 a 1:45, sem locução",
+      "version": "1.0.0"
+    },
+    {
       "name": "rainskills-setup",
       "source": "./plugins/rainskills-setup",
       "description": "Checa ffmpeg e chave do kie.ai no início da sessão",
