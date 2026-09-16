@@ -200,14 +200,30 @@ Ver `reference/materiais.md`. A ordem que rende:
    de engajamento: número de seguidores não é prova de nada, curtidas por post são.
 4. **Só então pergunte** — e peça poucas coisas, específicas.
 
-O **GPT Image 2** monta o quadro com as fotos reais como referência — **mas só para
-ambiente sem gente**. Em cena de tratamento com pessoas ele deforma corpo (caso
-real: massagem com duas mãos direitas, terapeutas com cara de manequim). **Pessoa em
-cena = nano-banana-2**, com as fotos reais como `image_input` e o pedido literal de
-*"anatomically perfect hands, one left and one right hand, five fingers each"* — e
-QC de mãos no início/meio/fim de todo clipe animado. O **Grok** só anima, e no
-prompt dele repita a trava de mãos e rostos. Ver a skill `video-tv-espera` para a
-cadeia completa.
+**O motor de imagem padrão é o nano-banana-2** (Gemini 2.5 Flash Image — atenção ao
+nome: não existe "GPT Image 2.5"; quando alguém pedir "o 2.5", é este). Sempre com
+as fotos reais do lugar como `image_input`. Custa o dobro do GPT Image 2 (12 vs 6
+créditos), e vale: em cena de tratamento com pessoas o GPT Image 2 deforma corpo
+(caso real: massagem com duas mãos direitas, terapeutas com cara de manequim), e o
+nano-banana-2 resolveu de primeira. Para gente, peça literalmente *"anatomically
+perfect hands, one left and one right hand, five fingers each"* — e faça QC de mãos
+no início/meio/fim de todo clipe animado. O **Grok** só anima, e no prompt dele
+repita a trava de mãos e rostos. Ver `video-tv-espera` para a cadeia completa.
+
+## O formato tour — a peça que mais rende no gênero
+
+Além do anúncio de 15–30s, o negócio local tem um segundo formato nativo: o **tour
+pelos ambientes** (35–55s, 9:16) — recepção → corredor → salas → fecho. É a peça de
+prova social por excelência ("existe, é bonito, é real") e o gancho que funciona é
+curiosidade local: *"A 4.9★ spa hidden in this resort"*.
+
+- **Clipes de caminhada** vêm do celular do cliente (estabilizado) ou de i2v sobre
+  frames reais; 6–8 planos de ~7s a 0,75–0,85×, dissolves longos (1,6s).
+- **Uma cartela por ambiente**, título + subtítulo na identidade; logo constante;
+  endcard "Link in bio · horário".
+- **O mesmo shot list vira a peça de TV** (16:9, cartelas no canto, fecho com
+  endereço) — uma pauta, duas entregas. Ver a skill `video-tv-espera`.
+- Trilha + ambiência de sala contínua (não só música), −14 LUFS.
 
 ## Formatos — 9:16 primeiro
 

@@ -38,7 +38,10 @@ A cadeia que funciona:
    `image_input`** — ele preserva sala, uniforme e até tatuagem da cliente. No
    prompt, peça literalmente: *"anatomically perfect hands, one left and one right
    hand, five fingers each; natural serene faces"*.
-2. **Ambiente sem gente = gpt-image ou nano-banana**, tanto faz — o defeito é só com corpo.
+2. **Padrão da casa: nano-banana-2 para TUDO** (gente e ambiente) — é o Gemini 2.5
+   Flash Image; não existe "GPT Image 2.5", quando pedirem "o 2.5" é este. Ambiente
+   sem gente também sai bem no gpt-image-2 pela metade do preço (6 vs 12 cr), mas
+   padronizar num motor só evita o erro de usar o errado em cena com corpo.
 3. **Animar com trava:** no prompt do i2v, *"hands keep exactly five fingers each
    and never deform; faces stay natural"* + movimento mínimo.
 4. **QC obrigatório em todo clipe com gente:** extraia frame do início, meio e fim
@@ -100,7 +103,7 @@ Imagem custa 6–12 créditos; animação custa 27. O fluxo que não queima cré
 
 | item | créditos |
 |---|---|
-| quadro (gpt-image / nano-banana-2) | 6–12 |
+| quadro (nano-banana-2, padrão) | 12 |
 | animação Grok 6s 720p | 27 |
 | upscale Topaz 2× (opcional — 720p já serve para TV) | 48 |
 | **peça completa, sem Topaz** | **~300–450** |
