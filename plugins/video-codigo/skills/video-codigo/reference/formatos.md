@@ -7,6 +7,7 @@
 | 16:9 | `[1920,1080]` | site, YouTube, LinkedIn, apresentação | 45–60 s |
 | 9:16 | padrão (1080×1920) | Reels, Stories, TikTok, Shorts | 18–28 s |
 | 1:1 | `[1080,1080]` | feed, anúncio | 15–30 s |
+| 16:9 TV | `[1920,1080]` | TV de recepção/loja (loop, sem som) | 60–105 s, loop sem fade, corpo ≥ 48 px |
 
 30 fps é o padrão (reels); 60 fps deixa panorâmicas longas mais suaves no 16:9.
 

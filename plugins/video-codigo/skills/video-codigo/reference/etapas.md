@@ -21,14 +21,25 @@ Detalhes em `descoberta.md`.
 Diga ao usuário, em uma ou duas linhas, o que achou ("6 telas reais, 3 vídeos, logo em SVG,
 paleta X"). Isso também mostra que você entendeu o produto.
 
-## 2. Conceito (a etapa que mais importa)
+## 2. Entrevista e BRIEFING.md
+
+Com a descoberta na mão, entreviste o usuário em rodadas curtas (até 4 perguntas por
+rodada, cada uma com uma proposta concreta tirada da descoberta): objetivo e onde vai
+rodar, idioma, referências e anti-referência, personalidade, regras de marca, material
+aprovado, fatos com fonte, CTA, formatos, som e aprovação. Método em `entrevista.md`.
+
+Registre tudo no `BRIEFING.md` (modelo em `briefing-prompt.md`): missão, exibição,
+identidade com a fonte de cada token, direção de arte (modo visual, escala tipográfica,
+**sequência de fundos das cenas**), conceito, roteiro cena a cena, fatos e textos, assets,
+entregáveis e decisões assumidas. Mostre o resumo e peça OK antes do primeiro render longo.
+
+## 3. Conceito (a etapa que mais importa)
 
 Ache a **metáfora nativa do público** e desenhe a estrutura a partir dela. Método,
-checklist e exemplos em `conceito.md`. Apresente o plano ao usuário em uma tabela curta
-(peça, papel, gancho) e siga. Se o usuário costuma delegar, não espere aprovação. Se
-algo é caro de refazer (ex.: vários filmes longos), confirme o conceito antes.
+checklist e exemplos em `conceito.md`; a gramática visual do modo escolhido em
+`direcao-de-arte.md`. O conceito entra no briefing (seções 7 e 8).
 
-## 3. Motor da marca
+## 4. Motor da marca
 
 1. Copie `lib.css` e redefina as variáveis com os tokens da marca, num `<style>` da peça ou
    num `marca.css`.
@@ -39,7 +50,7 @@ algo é caro de refazer (ex.: vários filmes longos), confirme o conceito antes.
 4. **Smoke test**: uma página com título, moldura com print real, ícones e cartão final.
    Renderize 2 stills e olhe.
 
-## 4. Peça-piloto
+## 5. Peça-piloto
 
 Faça **uma peça inteira você mesmo** antes de paralelizar: ela valida o motor, o tom e o
 padrão de qualidade, e vira a referência que os agentes vão copiar.
@@ -53,23 +64,38 @@ python folha.py peca 0.8,3,6,9,12,15               # out/peca-folha.png → leia
 node render.mjs peca.html                          # out/peca.mp4
 ```
 
-Na folha, confira: texto cortado ou encostando na borda, zona segura, contraste, câmera
-mostrando área vazia do print, dado pessoal legível, elemento "fantasma" parado na tela
-(ex.: cursor esquecido na origem), timing (legenda que ainda não entrou no instante escolhido).
+Na folha, faça **duas leituras**:
 
-## 5. Demais peças em paralelo
+1. **Técnica**: texto cortado ou encostando na borda, zona segura, contraste, câmera
+   mostrando área vazia, dado pessoal legível, elemento "fantasma" parado na tela (ex.:
+   cursor esquecido na origem), elemento sem posição caído no canto superior esquerdo,
+   timing (legenda que ainda não entrou no instante escolhido).
+2. **Diretor de arte**, olhando as miniaturas pequenas: as cenas são diferentes entre si?
+   cada uma tem um herói legível? a escala é de cartaz? o ritmo de cor bate com o briefing?
+   parece desta marca? (checklist completo em `direcao-de-arte.md`). Duas respostas ruins:
+   redesenhe a cena, não ajuste pixels.
+
+Revise também **o meio das transições** (extraia quadros do MP4 com
+`ffmpeg -ss <t> -i peca.mp4 -frames:v 1`): é onde vídeo em código costuma quebrar.
+
+## 6. Demais peças em paralelo
 
 Com o piloto aprovado, divida as outras peças entre subagentes (`subagentes.md`). Enquanto
 eles trabalham, faça capas, thumbnail e o plano de postagem.
 
-## 6. Revisão das peças recebidas
+## 7. Revisão das peças recebidas
 
 Para cada peça: stills em 6 momentos, folha, leitura. Corrija pequenos detalhes você mesmo
 (tamanho de fonte, posição); devolva ao agente o que for estrutural. Um alerta que um agente
 levanta (ex.: dado pessoal num vídeo) vai **na hora** para os outros agentes que usam o mesmo
 material.
 
-## 7. Entrega
+## 8. Entrega
+
+- **Confira antes de anunciar**: `ls -la` e `ffprobe` de cada master (dimensão, duração,
+  faixa de áudio). Nenhum README ou mensagem lista arquivo que você não conferiu.
+- A pasta de entrega é a do briefing. Não commite vídeo no repositório do site do cliente.
+- Versões anteriores ficam com sufixo (`-v1`) e o código delas numa pasta `v1/`.
 
 - `entrega/` com nomes legíveis (`01-nome-da-peca.mp4`), capas em `entrega/capas/`,
   thumbnail, e o `POSTAGEM.md` (`formatos.md`).

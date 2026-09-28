@@ -1,7 +1,8 @@
 # Produzir várias peças em paralelo
 
 Um kit (filme + 5 reels) sai em ~1 h com subagentes, contra várias horas em série. A unidade
-vem do **motor compartilhado + peça-piloto + briefing padronizado**.
+vem do **motor compartilhado + peça-piloto + BRIEFING.md**. Cada agente recebe o
+`BRIEFING.md` inteiro (não um resumo de memória) e a peça-piloto aprovada.
 
 ## Ordem
 
@@ -23,8 +24,9 @@ Pasta: <caminho>. Ferramentas: node, ffmpeg, playwright prontos. Texto em pt-BR 
 <lista das funções e classes que importam, 6–10 linhas>
 Peça de referência aprovada: <arquivo> — copie estrutura e estilo.
 
-## Marca
-<tokens, fontes, logo oficial, regras do manual em 5–8 linhas>
+## Briefing (leia inteiro antes de começar): <caminho>/BRIEFING.md
+Siga a identidade, a escala tipográfica, o ritmo de cor e as decisões dele. Não invente
+estética nova; se o briefing não cobre algo, pergunte.
 
 ## Assets reais (olhe antes de enquadrar)
 <lista com o que tem em cada arquivo; momentos úteis dos vídeos; o que EVITAR por privacidade>
@@ -41,6 +43,7 @@ Peça de referência aprovada: <arquivo> — copie estrutura e estilo.
 ## Fluxo
 STILLS=… node render.mjs <peça> → python folha.py … → leia → itere → render final.
 
+Antes de responder, confira o MP4 com ls + ffprobe (duração, dimensão, áudio).
 Responda curto: arquivo final, duração, 4 linhas do que tem, o que não fez.
 ```
 

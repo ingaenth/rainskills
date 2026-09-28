@@ -17,7 +17,7 @@ const E = {
 const bump = (t, a, d) => Math.sin(Math.PI * P(t, a, a + d));
 const $ = (tag, cls, parent, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; if (parent) parent.appendChild(e); return e };
 const div = (cls, parent, html) => $('div', cls, parent, html);
-function place(e, x, y, w, h) { e.style.left = x + 'px'; e.style.top = y + 'px'; if (w != null) e.style.width = w + 'px'; if (h != null) e.style.height = h + 'px'; return e }
+function place(e, x, y, w, h) { if (!e.style.position) e.style.position = 'absolute'; e.style.left = x + 'px'; e.style.top = y + 'px'; if (w != null) e.style.width = w + 'px'; if (h != null) e.style.height = h + 'px'; return e }
 function T(e, x = 0, y = 0, s = 1, r = 0, extra = '') { e.style.transform = `translate(${x}px,${y}px) scale(${s}) rotate(${r}deg) ${extra}` }
 function O(e, o) { o = clamp(o); e.style.opacity = o; e.style.visibility = o <= 0.001 ? 'hidden' : 'visible' }
 function txt(e, s) { if (e._t !== s) { e.innerHTML = s; e._t = s } }
@@ -123,6 +123,55 @@ function endCard(L, a, { logo = null, logoW = W > H ? 520 : 620, headline = '', 
 }
 // entrada cinematográfica: sobe e desfoca → nítido
 function reveal(e, t, a, d = .9, dist = 40) { const k = E.out5(P(t, a, a + d)); O(e, P(t, a, a + d * .4)); T(e, 0, (1 - k) * dist); e.style.filter = k < .999 ? `blur(${((1 - k) * 16).toFixed(1)}px)` : 'none' }
+
+// ---- foto com ponto focal e câmera lenta: photo(pai, src, x, y, w, h, [fx, fy]).cam(escala, dx, dy) ----
+// object-fit:cover + origem da escala no foco: o assunto continua no quadro em qualquer recorte (16:9 → 9:16).
+function photo(parent, src, x, y, w, h, focal = [.5, .5]) {
+  const f = div('ph', parent); place(f, x, y, w, h);
+  const im = $('img', '', f); im.src = src;
+  im.style.objectPosition = im.style.transformOrigin = `${focal[0] * 100}% ${focal[1] * 100}%`;
+  return { f, im, cam(s = 1, dx = 0, dy = 0) { im.style.transform = `translate(${dx}px,${dy}px) scale(${s})` } };
+}
+// ---- sombreamento (degradê) que garante contraste do texto sobre foto ----
+function shade(parent, bg) { const e = div('shade', parent); e.style.background = bg; return e }
+// ---- linha com máscara: o texto sobe de trás de uma borda invisível. .go(k) com k 0→1 ----
+// o padding interno evita cortar descendentes (g, y, p) e o itálico que passa da caixa.
+function mline(parent, html, x, y, w, css = '', align = 'left') {
+  const m = div('mask', parent); place(m, x, y, w);
+  const inner = div('', m, html); inner.style.cssText += ';' + css + ';padding:.04em .12em .22em 0'; inner.style.textAlign = align;
+  return { m, inner, go(k) { inner.style.transform = `translateY(${((1 - k) * 110).toFixed(2)}%)`; O(m, k > .001 ? 1 : 0) } };
+}
+// ---- cortina de entrada da cena L a partir de t=a: 'up' | 'down' | 'left' | 'right' | 'circle' ----
+// recorta a camada com clip-path e corre um filete na cor --accent2 pela borda da cortina.
+function curtain(L, a, dir = 'up', d = .6) {
+  const edge = div('edge', stage); const vert = dir === 'left' || dir === 'right'; if (vert) edge.classList.add('v');
+  on(t => {
+    const k = E.inOut(P(t, a, a + d)), r = ((1 - k) * 100).toFixed(2);
+    L.style.clipPath = k >= 1 ? 'none' : { up: `inset(${r}% 0 0 0)`, down: `inset(0 0 ${r}% 0)`, left: `inset(0 0 0 ${r}%)`, right: `inset(0 ${r}% 0 0)`, circle: `circle(${(k * 120).toFixed(2)}% at 50% 46%)` }[dir];
+    const on_ = t >= a && t < a + d && dir !== 'circle'; edge.style.display = on_ ? 'block' : 'none';
+    if (!on_) return;
+    const pos = { up: (1 - k) * H, down: k * H, left: (1 - k) * W, right: k * W }[dir];
+    if (vert) edge.style.left = (pos - 1) + 'px'; else edge.style.top = (pos - 1) + 'px';
+    O(edge, bump(t, a, d) * 1.2);
+  });
+  return edge;
+}
+// ---- linha de cardápio/preço: nome grande; embaixo rótulo, pontilhado e valor. Devolve (t, a) => anima ----
+// tone: { name, meta, lead, price (cores), nameSize, priceSize (px) } — tudo do briefing, nada fixo.
+function priceRow(parent, it, x, y, w, tone = {}) {
+  const c = k => tone[k] || cssVar(k === 'price' || k === 'lead' ? '--accent2' : k === 'meta' ? '--fg2' : '--fg', '#fff');
+  const e = div('prow', parent); place(e, x, y, w);
+  e.innerHTML = `<div class="mask pnm"><div style="font-size:${tone.nameSize || 72}px;color:${c('name')}">${it.name}</div></div>` +
+    `<div class="prr" style="color:${c('meta')}"><span class="pmt">${it.meta || ''}</span><span class="pld" style="color:${c('lead')}"></span>` +
+    `<span class="ppr" style="font-size:${tone.priceSize || 96}px;color:${c('price')}">${it.from ? `<i>${it.from === true ? 'from' : it.from}</i>` : ''}${it.price}</span></div>`;
+  const nm = e.querySelector('.pnm>div'), mt = e.querySelector('.pmt'), ld = e.querySelector('.pld'), pr = e.querySelector('.ppr');
+  return (t, a) => {
+    nm.style.transform = `translateY(${((1 - E.out5(P(t, a, a + .8))) * 110).toFixed(2)}%)`;
+    const km = E.out(P(t, a + .3, a + .9)); O(mt, km); T(mt, 0, (1 - km) * 14);
+    ld.style.transform = `scaleX(${E.out(P(t, a + .35, a + 1)).toFixed(3)})`;
+    const kp = E.out5(P(t, a + .45, a + 1.05)); O(pr, kp); T(pr, (1 - kp) * 30, 0);
+  };
+}
 
 // ---- kit de áudio (Web Audio offline): tudo sintetizado, sem direito autoral; cada K.* agenda um som no tempo t ----
 function makeKit(ctx) {

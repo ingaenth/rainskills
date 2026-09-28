@@ -38,8 +38,8 @@
     {
       "name": "video-codigo",
       "source": "./plugins/video-codigo",
-      "description": "Produz vídeo feito inteiramente em código — HTML/CSS/JavaScript numa timeline determinística, fotografado quadro a quadro pelo Playwright e montado no ffmpeg, com trilha sintetizada. Zero crédito, tex",
-      "version": "1.0.0"
+      "description": "Produz vídeo feito inteiramente em código, totalmente personalizado por entrevista (BRIEFING.md como prompt mestre) — HTML/CSS/JavaScript numa timeline determinística, fotografado quadro a quadro pelo Playwright e montado no ffmpeg, com trilha sintetizada. Zero crédito, texto e números exatos, telas reais do produto, marca pixel a pixel. Para qualquer empresa: explicativo, filme de lançamento 16:9, kit de reels 9:16, capas e plano de postagem.",
+      "version": "1.1.0"
     },
     {
       "name": "rainskills-setup",

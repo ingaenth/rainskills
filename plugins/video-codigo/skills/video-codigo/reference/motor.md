@@ -49,6 +49,11 @@ animação CSS: o render pula de quadro em quadro e o preview pode voltar no tem
 | `shot(pai, src, x, y, w, h, iw, ih)` → `.set(cx, cy, escala)` | janela sobre print ou vídeo com câmera virtual travada dentro da imagem |
 | `glass(pai, src, …)` | o mesmo dentro de uma moldura de vidro com barra de navegador |
 | `seekVideo(shot.m, segundos)` | quadro exato de vídeo (chamar dentro de `on`) |
+| `photo(pai, src, x, y, w, h, [fx, fy])` → `.cam(escala, dx, dy)` | foto com **ponto focal** (o assunto fica no quadro em qualquer recorte) e câmera lenta: `p.cam(lerp(1.15, 1.02, P(t, a, b)))` |
+| `shade(pai, degradê)` | sombreamento por cima da foto para o texto ter contraste |
+| `mline(pai, html, x, y, w, css, align)` → `.go(k)` | linha com **máscara**: o texto sobe de trás de uma borda; não corta descendentes nem itálico |
+| `curtain(camada, a, dir, d)` | **cortina** de entrada da cena (`up`, `down`, `left`, `right`, `circle`) com filete `--accent2` na borda |
+| `priceRow(pai, {name, meta, price, from}, x, y, w, tone)` → `(t, a)` | linha de **cardápio/preço**: nome grande, rótulo, pontilhado crescendo e valor; cores e tamanhos vêm do briefing |
 | `tele(pai, d, espessura, cor)` → `(k)` | traço que se desenha (0→1): `wobble(cx,cy,rx,ry)` elipse à mão, `arrow(x0,y0,x1,y1)` |
 | `tlabel(pai, texto, x, y)` → `(t, a, b)` | etiqueta de anotação |
 | `sweeps([tempos])` | transição: barra na cor `--accent` + véu `--bg` |
@@ -57,6 +62,18 @@ animação CSS: o render pula de quadro em quadro e o preview pode voltar no tem
 | classes CSS | `.hx` título (com `<em>` de destaque), `.eyebrow`, `.card`, `.pill`, `.mono` (números tabulares) |
 
 ## Padrões de cena que funcionaram
+
+Escala, ritmo de cor e escolha de modo visual estão em [direcao-de-arte.md](direcao-de-arte.md).
+Os padrões abaixo são a parte técnica.
+
+- **Foto em tela cheia com texto de cartaz** (modo editorial): `photo()` ocupando o quadro
+  ou 60–65% dele, `shade()` levando a foto para a cor de fundo, título com `mline()` e
+  itens com `priceRow()`. Troca de foto dentro da cena (ex.: quando entra o 2º item) com
+  opacidade cruzada e câmera própria.
+- **Foto em moldura** (arco, retângulo com filete): `photo()` com `border-radius` e
+  `clip-path: inset(... round ...)` revelando de baixo para cima, filete da cor de destaque
+  a 20 px de distância.
+- **Número herói**: 300–480 px, contando com `lerp`, sozinho na cena, estrelas ou rótulo acendendo em sequência.
 
 - **Câmera sobre print real**: `glass()` + `.set()` animado entre dois enquadramentos (Ken
   Burns). Mire em regiões com conteúdo, confira a folha: câmera em área vazia é o erro mais comum.

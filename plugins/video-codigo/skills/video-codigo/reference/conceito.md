@@ -34,8 +34,9 @@ cliente anterior.
 | ERP para PMEs | "Do orçamento ao pedido, sem perder o fio" | **O fio** | um único pedido percorre Vendas → NF-e → Cobrança → Financeiro → Estoque → Relatórios, ligado por uma linha contínua; os números batem entre as telas; no fim, zoom out mostra o fio inteiro |
 | Diário de trades | "Transforme seus dados em consistência" | **Transmissão esportiva / VAR** | placar "VOCÊ 1 × 4 MERCADO", apito final, replay em câmera lenta com telestrador amarelo, mapa de calor num campo, cartas de "escalação" dos setups (TITULAR/BANCO), prancheta tática; som de estádio |
 | CRM omnichannel | "Toda conversa é uma oportunidade" | **Keynote / a mensagem que chega** | notificações de 10 canais sem resposta viram partículas que convergem num balão "digitando", que vira o logo; capítulos com telas reais em vidro; tipografia gigante |
+| Spa em dois resorts (modo editorial, só fotos) | "Mindful tranquility" + preços do site | **A carta de um restaurante fino** | "The Ritual Menu": capa em papel creme, uma seção por página (massagem em foto escura, facial em moldura de arco, corpo em bloco dourado), preços com pontilhado, faixa 60/75/90 min do couples, nota 4.9 gigante, fecho em foto da janela para o mar. A 1ª versão, só tipografia pequena em fundo escuro, foi reprovada: "simples, pequeno, uma cor só" |
 
-A mesma skill gerou os três com estruturas, transições e sons completamente diferentes.
+A mesma skill gerou os quatro com estruturas, transições e sons completamente diferentes.
 
 ## Kit de lançamento (quando pedem "lançar a plataforma")
 
