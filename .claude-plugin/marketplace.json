@@ -36,6 +36,12 @@
       "version": "1.0.0"
     },
     {
+      "name": "video-codigo",
+      "source": "./plugins/video-codigo",
+      "description": "Produz vídeo feito inteiramente em código — HTML/CSS/JavaScript numa timeline determinística, fotografado quadro a quadro pelo Playwright e montado no ffmpeg, com trilha sintetizada. Zero crédito, tex",
+      "version": "1.0.0"
+    },
+    {
       "name": "rainskills-setup",
       "source": "./plugins/rainskills-setup",
       "description": "Checa ffmpeg e chave do kie.ai no início da sessão",

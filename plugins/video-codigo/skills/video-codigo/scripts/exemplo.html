@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Exemplo — video-codigo</title>
+<!-- 1) Fontes da marca (Google Fonts ou @font-face local) -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=block" rel="stylesheet">
+<link rel="stylesheet" href="lib.css">
+<!-- 2) A marca: redefina só as variáveis. Troque pelos tokens do cliente. -->
+<style>
+:root{ --bg:#07070d; --bg2:#12121c; --accent:#6d4cff; --accent2:#a391ff; --glow:rgba(109,76,255,.32);
+       --font-display:Montserrat,Inter,sans-serif; --font-text:Inter,sans-serif; }
+</style></head>
+<body><div id="stage"></div>
+<!-- 3) Para 16:9: <script>window.SIZE=[1920,1080]</script> AQUI, antes do lib.js -->
+<script src="lib.js"></script>
+<script>
+// Peça-modelo de 12 s (9:16): gancho → problema → produto → cartão final.
+// Tudo é função de t: nada de setTimeout, nada de CSS animation. seek(t) desenha o quadro t.
+window.DUR = 12;
+
+// ── Cena 1 (0–3.2 s): gancho em 1,5 s, legenda cinética ──
+const A = scene(0, 3.2);
+const h1 = words(A, 'Seu cliente *mandou* *mensagem.* | Quem ~respondeu?~', 60, 640, 960, 96);
+on(t => h1.anim(t, .15, 3.1, .09));
+
+// ── Cena 2 (3.2–7 s): um "print" do produto numa moldura com câmera virtual ──
+// Em projeto real use o print oficial: glass(B, 'assets/tela.png', x, y, w, h, 1920, 1080) e g.set(cx, cy, escala)
+const B = scene(3.2, 7);
+const eb = div('abs ctr', B, '<span class="eyebrow">Dentro da plataforma</span>'); place(eb, 0, 300, W);
+const tt = div('abs ctr hx', B, 'Tudo numa <em>tela só.</em>'); place(tt, 60, 360, W - 120); tt.style.fontSize = '104px';
+const tela = div('card', B); place(tela, 90, 700, 900, 640);
+tela.innerHTML = [...Array(6)].map((_, i) => `<div style="position:absolute;left:40px;right:40px;top:${40 + i * 98}px;height:74px;border-radius:14px;background:rgba(255,255,255,${i === 2 ? .1 : .04});display:flex;align-items:center;padding:0 24px;gap:18px;font:600 26px var(--font-text)"><i style="width:34px;height:34px;border-radius:50%;background:${i === 2 ? 'var(--accent)' : 'rgba(255,255,255,.15)'}"></i>Contato ${i + 1}<span class="mono" style="margin-left:auto;color:var(--fg3)">há ${i + 2} min</span></div>`).join('');
+const circ = tele(B, wobble(540, 700 + 40 + 2 * 98 + 37, 460, 70));
+const lbl = tlabel(B, 'Respondido na hora', 300, 1380);
+on(t => { reveal(eb, t, 3.3, .7, 20); reveal(tt, t, 3.4, .8, 40); rise(tela, t, 3.7, .7, 60); circ(E.out(P(t, 5.0, 5.5))); lbl(t, 5.4, 7) });
+
+// ── Cena 3 (7–12 s): cartão final (troque o logo pelo arquivo oficial do cliente) ──
+const C = scene(7, 12.01);
+endCard(C, 7.1, { logo: null, headline: 'Toda conversa é uma<br><em>oportunidade.</em>', cta: 'Teste grátis por 7 dias', note: 'link na bio' });
+sweeps([3.2, 7]);
+
+// ── Áudio: sintetizado, sincronizado aos mesmos tempos ──
+window.buildAudio = K => {
+  K.pad([57, 60, 64, 67], 0, 3.2, .01, 900);
+  [.15, 1.2].forEach(t => K.thump(t, .45));
+  for (let b = 0; b < 8; b++) { const t = 3.2 + b * .5; K.kick(t, .5); K.hat(t + .25, .03); K.pluck([69, 72, 76, 79][b % 4], t, .04) }
+  K.whoosh(2.8, .8, .14); K.whoosh(6.6, .8, .14); K.squeak(5.0, .45); K.success(5.45, .06);
+  K.endChord(7.1);
+};
+boot();
+</script></body></html>
